@@ -5,18 +5,21 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vacancies {
+public class Vacancy {
   private Integer id;
   private String description;
   private Category category;
-  private float salary;
+  private double salary;
   private Integer expFrom;
   private Integer expTo;
   private boolean isActive;
-  private float created_date;
-  private float updateTime;
+  private User author;
+  private Date created_date;
+  private Date updateTime;
 
 }

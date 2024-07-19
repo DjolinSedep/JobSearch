@@ -7,9 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Masage {
-    private Integer id;;
-    private RespondedApplicant respondedApplicant;
-    private String content;
-    private String timeStamp;
+public class ContactType {
+    private Integer id;
+    private String type;
 }

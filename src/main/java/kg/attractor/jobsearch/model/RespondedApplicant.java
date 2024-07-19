@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class RespondedApplicant {
     private Integer id;
     private Resume resume;
-    private Vacancies vacancy;
+    private Vacancy vacancy;
     private  boolean confirmation;
 
 }

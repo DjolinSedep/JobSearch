@@ -10,6 +10,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Category {
     private Integer id;
-    private Category category;
-
+    private Category parentCategory;
 }

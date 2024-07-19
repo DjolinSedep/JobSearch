@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ContactsInfo {
     private Integer id;
-    private ContactTypes types;
+    private ContactType type;
     private Resume resume;
     private String value;
 
