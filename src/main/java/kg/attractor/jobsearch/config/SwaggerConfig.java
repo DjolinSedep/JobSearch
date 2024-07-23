@@ -12,7 +12,7 @@ public class SwaggerConfig {
         return new OpenAPI()
                 .info(
                         new Info()
-                                .title("Spring Data REST API")
+                                .title("Job Search REST API")
                                 .version("1.0.0")
                 );
     }
