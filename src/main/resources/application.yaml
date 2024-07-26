@@ -4,3 +4,10 @@ server:
   spring:
     application:
       name: JobSearch
+
+      spring:
+        url=jdbc:h2:./db/test;AUTO_SERVER=TRUE
+      password: qwerty
+    driver-class-name=org:
+      h2:
+        Driver:
