@@ -6,7 +6,7 @@ CREATE TABLE users (
                        role ENUM('applicant', 'employer') NOT NULL
 );
 
--- Создание таблицы резюме
+
 CREATE TABLE resumes (
                          id INT PRIMARY KEY AUTO_INCREMENT,
                          user_id INT NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE applications (
 );
 
 
--- Вставка тестовых данных в таблицу пользователей
+
 INSERT INTO users (email, name, role) VALUES
                                           ('applicant1@example.com', 'Иван Петров', 'applicant'),
                                           ('employer1@example.com', 'ООО "Техно"', 'employer');
