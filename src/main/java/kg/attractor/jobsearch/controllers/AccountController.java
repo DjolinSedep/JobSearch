@@ -15,7 +15,7 @@ public class AccountController {
     public ResponseEntity<String> registerUser(@RequestParam String name,
                                                @RequestParam String password,
                                                @RequestParam String role) {
-        // TODO: Валидация, регистрация ну и обработка ошибок
+
         return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
     }
 }
