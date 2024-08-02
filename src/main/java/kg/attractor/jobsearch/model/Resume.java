@@ -19,6 +19,4 @@ public class Resume {
  private Date createDate;
  private Date updateTime;
 
-    public  getUserId() {
-    }
 }

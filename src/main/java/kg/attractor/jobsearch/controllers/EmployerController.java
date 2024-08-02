@@ -36,8 +36,4 @@ public class EmployerController {
         return "Search for applicants who have responded to the vacancy" + vacancyId;
     }
 
-    @GetMapping("searchingApplicants/{employerName}")
-    public String searchApplicant(@RequestParam String employerName){
-        return "Searching Applicants" + employerName;
-    }
 }

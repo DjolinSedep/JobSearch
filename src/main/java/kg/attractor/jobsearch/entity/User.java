@@ -1,12 +1,12 @@
-package kg.attractor.jobsearch.model;
+package kg.attractor.jobsearch.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
-@AllArgsConstructor
+@Getter
+@Setter
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class User {
     private Integer id;
     private String name;
@@ -14,8 +14,7 @@ public class User {
     private Integer age;
     private String email;
     private String password;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private String avatar;
     private String accountType;
-
 }

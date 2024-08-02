@@ -1,31 +1,329 @@
 databaseChangeLog:
-  -changeSet:
-    id: create table users
-    author: Sedep
-    change:
-      - createTable:
-          tableName: users
-          columns:
-            - column:
-                name: id
-                type: int
-                autoIncrement: true
-                constraints:
-                  primaryKey: true
-                  nullable: false
-            - column:
-                name: name
-                type: varchar(255)
-                constraints:
-                  nullable: false
-            - column:
-                name: email
-                type: varchar(255)
-                constraints:
-                  unique: true
-                  nullable: false
-            - column:
-                name: phone_number
-                type: varchar(15)
-                constraints:
-                  nullable: true
+  - changeSet:
+      id: create-users-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: surname
+                  type: varchar(255)
+              - column:
+                  name: age
+                  type: int
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    unique: true
+              - column:
+                  name: password
+                  type: varchar(255)
+              - column:
+                  name: phone_number
+                  type: varchar(55)
+              - column:
+                  name: avatar
+                  type: text
+              - column:
+                  name: account_type
+                  type: varchar(55)
+
+  - changeSet:
+      id: create-categories-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: categories
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: parent_id
+                  type: int
+
+  - changeSet:
+      id: create-vacancies-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: vacancies
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: text
+              - column:
+                  name: description
+                  type: text
+              - column:
+                  name: category_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_vacancies_category_id
+                    references: categories(id)
+              - column:
+                  name: salary
+                  type: real
+              - column:
+                  name: exp_from
+                  type: int
+              - column:
+                  name: exp_to
+                  type: int
+              - column:
+                  name: is_active
+                  type: boolean
+              - column:
+                  name: author_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_vacancies_author_id
+                    references: users(id)
+              - column:
+                  name: created_date
+                  type: timestamp
+              - column:
+                  name: update_time
+                  type: timestamp
+
+  - changeSet:
+      id: create-resumes-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: resumes
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: applicant_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_resumes_applicant_id
+                    references: users(id)
+              - column:
+                  name: name
+                  type: text
+              - column:
+                  name: category_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_resumes_category_id
+                    references: categories(id)
+              - column:
+                  name: salary
+                  type: real
+              - column:
+                  name: is_active
+                  type: boolean
+              - column:
+                  name: created_date
+                  type: timestamp
+              - column:
+                  name: update_time
+                  type: timestamp
+
+  - changeSet:
+      id: create-responded-applicants-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: responded_applicants
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: resume_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_responded_applicants_resume_id
+                    references: resumes(id)
+              - column:
+                  name: vacancy_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_responded_applicants_vacancy_id
+                    references: vacancies(id)
+              - column:
+                  name: confirmation
+                  type: boolean
+
+  - changeSet:
+      id: create-messages-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: messages
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: responded_applicants
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_messages_responded_applicants
+                    references: responded_applicants(id)
+              - column:
+                  name: content
+                  type: text
+              - column:
+                  name: timestamp
+                  type: timestamp
+
+  - changeSet:
+      id: create-education-info-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: education_info
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: resume_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_education_info_resume_id
+                    references: resumes(id)
+              - column:
+                  name: institution
+                  type: text
+              - column:
+                  name: program
+                  type: text
+              - column:
+                  name: start_date
+                  type: date
+              - column:
+                  name: end_date
+                  type: date
+              - column:
+                  name: degree
+                  type: int
+
+  - changeSet:
+      id: create-work-experience-info-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: work_experience_info
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: resume_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_work_experience_info_resume_id
+                    references: resumes(id)
+              - column:
+                  name: years
+                  type: int
+              - column:
+                  name: company_name
+                  type: text
+              - column:
+                  name: position
+                  type: text
+              - column:
+                  name: responsibilities
+                  type: text
+
+  - changeSet:
+      id: create-contact-types-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: contact_types
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type
+                  type: text
+
+  - changeSet:
+      id: create-contacts-info-table
+      author: Daniiar
+      changes:
+        - createTable:
+            tableName: contacts_info
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: type_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_contacts_info_type_id
+                    references: contact_types(id)
+              - column:
+                  name: resume_id
+                  type: int
+                  constraints:
+                    foreignKeyName: fk_contacts_info_resume_id
+                    references: resumes(id)
+              - column:
+                  name: "value"
+                  type: text

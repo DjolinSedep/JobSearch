@@ -1,7 +1,9 @@
 package kg.attractor.jobsearch.dao;
 
-import kg.attractor.jobsearch.model.Resume;
+
+import kg.attractor.jobsearch.entity.Resume;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -11,86 +13,49 @@ import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
-public class ResumeDao<Experience, Education> {
+public class ResumeDao {
     private final JdbcTemplate jdbcTemplate;
 
 
-    public Optional<Resume> findById(int resumeId) {
-        String sql = "SELECT * FROM resumes WHERE id = ?";
-        return Optional.ofNullable(jdbcTemplate.queryForObject(
-                sql, new BeanPropertyRowMapper<>(Resume.class), resumeId));
+    public List<Resume> findAll() {
+        String sql = "SELECT * FROM resumes";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Resume.class));
     }
 
 
-    public List<Resume> findAllByUserId(int userId) {
-        String sql = "SELECT * FROM resumes WHERE user_id = ?";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Resume.class), userId);
+    public Optional<Resume> findByCategoryId(int categoryId) {
+        String sql = "select * from resumes where category_id = ?";
+        return Optional.ofNullable(
+                DataAccessUtils.singleResult(
+                        jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Resume.class), categoryId)
+                )
+        );
     }
 
-
-    public <Education> void addResume(Resume resume) {
-        String sql = "INSERT INTO resumes (user_id, title, category, summary) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, resume.getUserId(), resume.getTitle(), resume.getCategory(), resume.getSummary());
-
-
-        for (Education education : resume.getEducations()) {
-            addEducation(resume.getId(), education);
-        }
-
-
-        for (Experience experience : resume.getExperiences()) {
-            addExperience(resume.getId(), experience);
-        }
+    public List<Resume> findByApplicantId(int applicantId) {
+        String sql = "select * from resumes where applicant_id = ?";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Resume.class), applicantId);
     }
 
-
-    public void updateResume(Resume resume) {
-        String sql = "UPDATE resumes SET title = ?, category = ?, summary = ? WHERE id = ?";
-        jdbcTemplate.update(sql, resume.getTitle(), resume.getCategory(), resume.getSummary(), resume.getId());
-
-        deleteEducationsByResumeId(resume.getId());
-        for (Education education : resume.getEducations()) {
-            addEducation(resume.getId(), education);
-        }
-
-
-        deleteExperiencesByResumeId(resume.getId());
-        for (Experience experience : resume.getExperiences()) {
-            addExperience(resume.getId(), experience);
-        }
-    }
-
-    public void deleteResume(int resumeId) {
-
-        deleteEducationsByResumeId(resumeId);
-        deleteExperiencesByResumeId(resumeId);
-
-        String sql = "DELETE FROM resumes WHERE id = ?";
+    public void deleteById(int resumeId) {
+        String sql = "delete from resumes where id = ?";
         jdbcTemplate.update(sql, resumeId);
     }
 
-
-    private void addEducation(int resumeId, Education education) {
-        String sql = "INSERT INTO education (resume_id, institution, degree, start_date, end_date) VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, resumeId, education.getInstitution(), education.getDegree(), education.getStartDate(), education.getEndDate());
+    public void createResume(Resume resume) {
+        String sql = "insert into resumes (applicant_id, name, category_id, salary, is_active, created_date, update_time) values (?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql,
+                resume.getApplicantId(),
+                resume.getName(),
+                resume.getCategoryId(),
+                resume.getSalary(),
+                resume.getIsActive(),
+                resume.getCreatedDate(),
+                resume.getUpdatedTime());
     }
 
-
-    private void addExperience(int resumeId, Experience experience) {
-        String sql = "INSERT INTO experience (resume_id, company, position, start_date, end_date) VALUES (?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, resumeId, experience.getCompany(), experience.getPosition(), experience.getStartDate(), experience.getEndDate());
+    public void editResume(Resume resume){
+        String sql = "update resumes set applicant_id = ?, name = ?, category_id = ?, salary = ?, is_active = ?, created_date = ?, update_time = ? where id = ?";
+        jdbcTemplate.update(sql, resume.getApplicantId(), resume.getName(), resume.getCategoryId(), resume.getSalary(), resume.getIsActive(), resume.getCreatedDate(), resume.getUpdatedTime(), resume.getId());
     }
-
-
-    private void deleteEducationsByResumeId(int resumeId) {
-        String sql = "DELETE FROM education WHERE resume_id = ?";
-        jdbcTemplate.update(sql, resumeId);
-    }
-
-
-    private void deleteExperiencesByResumeId(int resumeId) {
-        String sql = "DELETE FROM experience WHERE resume_id = ?";
-        jdbcTemplate.update(sql, resumeId);
-    }
-
 }

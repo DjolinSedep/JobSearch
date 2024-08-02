@@ -1,8 +1,10 @@
 package kg.attractor.jobsearch.controllers;
 
+import jakarta.validation.Valid;
 import kg.attractor.jobsearch.dto.UserDto;
 import kg.attractor.jobsearch.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -29,7 +31,9 @@ public class UserController {
 
     @GetMapping("/email/{email}")
     public ResponseEntity<UserDto> getUserByEmail(@PathVariable String email) {
-        return ResponseEntity.ok(userService.getUserByEmail(email));
+        UserDto user = userService.getUserByEmail(email);
+        return new ResponseEntity<>(user, HttpStatus.OK);
+
     }
 
 
@@ -73,5 +77,14 @@ public class UserController {
     public ResponseEntity<List<UserDto>> getApplicantsByJobId(@PathVariable int jobId) {
         return ResponseEntity.ok(userService.getApplicantsByJobId(jobId));
     }
+
+    @PostMapping
+    public ResponseEntity<UserDto> createUser(@Valid @RequestBody UserDto userDto) {
+        userService.addUser(userDto);
+        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
+    }
+
+
+
 
 }
