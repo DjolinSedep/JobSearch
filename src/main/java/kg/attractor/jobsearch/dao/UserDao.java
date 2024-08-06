@@ -19,14 +19,14 @@ public class UserDao {
 
 
     public List<User> getAllUsers() {
-        String aql = "select * from users";
-        return jdbcTemplate.query(aql, new BeanPropertyRowMapper<>(User.class));
+        String sql = "select * from users";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
 
     }
 
-    public UserDto findUserByNumber(String phoneNumber) {
+    public User findUserByNumber(String phoneNumber) {
         String sql = "select * from users where LOWER(name)  = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(UserDto.class), phoneNumber);
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), phoneNumber);
     }
 
     public List<User> findResumesByUserId(int userId) {

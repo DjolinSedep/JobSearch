@@ -1,8 +1,8 @@
-INSERT INTO users (name, surname, age, email, password, phone_number, avatar, account_type)
+INSERT INTO users (name, surname, age, email, password, phone_number, avatar, account_type, enabled, authority_id)
 VALUES
-    ('Naruto', 'Uzumaki', 17, 'naruto@konoha.com', 'rasengan123', '0500111222', 'naruto.png', 'APPLICANT'),
-    ('Sasuke', 'Uchiha', 18, 'sasuke@konoha.com', 'sharingan123', '0500222333', 'sasuke.png', 'APPLICANT'),
-    ('Madara', 'Uchiha', 90, 'madara@uchiha.com', 'eternal123', '0500333444', 'madara.png', 'EMPLOYER');
+    ('Naruto', 'Uzumaki', 17, 'naruto@konoha.com', '$2a$12$5N.omt94dD2tZzhMBKKxLuhFatbEaV.HOisHBQ8HuLFV9KLYQHdQi', '0500111222', 'naruto.png', 'APPLICANT', true, 2),
+    ('Sasuke', 'Uchiha', 18, 'sasuke@konoha.com', '$2a$12$D6KtZCwLAdKS0Yd0fLXiGuFa06RKNr6XVrTHu4jPwj9xMBKImiaia', '0500222333', 'sasuke.png', 'APPLICANT', true, 2),
+    ('Madara', 'Uchiha', 90, 'madara@uchiha.com', '$2a$12$qabR.0pa5HmVv/GaUNW5iunKTJfqk4YbXxTmxgvTzv3Bm.FyKI4j2', '0500333444', 'madara.png', 'EMPLOYER', true, 1);
 
 INSERT INTO categories (name, parent_id)
 VALUES ('Ninja Arts', NULL);

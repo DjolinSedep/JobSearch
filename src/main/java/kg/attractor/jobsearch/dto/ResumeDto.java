@@ -1,5 +1,6 @@
 package kg.attractor.jobsearch.dto;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -11,11 +12,15 @@ import java.math.BigDecimal;
 
 public class ResumeDto {
     private Integer id;
+    @NotNull
     private Integer category_id;
+    @NotNull
     private Integer  applicant_id;
+    @NotNull
     private String name;
-    private BigDecimal salary;
-    private Integer isActive;
+    @NotNull
+    private double salary;
+    private boolean isActive;
 
 
 }

@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003
+      author: Sedep
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: enabled
+                  type: boolean
+                  constraints:
+                    nullable: false
+              - column:
+                  name: authority_id
+                  type: long
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_authority_user_id
+                    references: authorities(id)

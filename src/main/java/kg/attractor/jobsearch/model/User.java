@@ -14,7 +14,7 @@ public class User {
     private Integer age;
     private String email;
     private String password;
-    private Integer phoneNumber;
+    private String phoneNumber;
     private String avatar;
     private String accountType;
 

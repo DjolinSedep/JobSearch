@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004
+      author: Sedep
+      changes:
+        - insert:
+            tableName: authorities
+            columns:
+              - column:
+                  name: authority
+                  value: 'EMPLOYER'
+        - insert:
+            tableName: authorities
+            columns:
+              - column:
+                  name: authority
+                  value: 'APPLICANT'

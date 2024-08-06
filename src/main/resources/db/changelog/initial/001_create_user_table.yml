@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: create-users-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: users
@@ -42,7 +42,7 @@ databaseChangeLog:
 
   - changeSet:
       id: create-categories-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: categories
@@ -56,14 +56,16 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: name
-                  type: varchar(255)
+                  type: varchar(50)
               - column:
                   name: parent_id
                   type: int
 
+
+
   - changeSet:
       id: create-vacancies-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: vacancies
@@ -114,7 +116,7 @@ databaseChangeLog:
 
   - changeSet:
       id: create-resumes-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: resumes
@@ -156,7 +158,7 @@ databaseChangeLog:
 
   - changeSet:
       id: create-responded-applicants-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: responded_applicants
@@ -186,7 +188,7 @@ databaseChangeLog:
 
   - changeSet:
       id: create-messages-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: messages
@@ -213,7 +215,7 @@ databaseChangeLog:
 
   - changeSet:
       id: create-education-info-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: education_info
@@ -249,7 +251,7 @@ databaseChangeLog:
 
   - changeSet:
       id: create-work-experience-info-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: work_experience_info
@@ -282,7 +284,7 @@ databaseChangeLog:
 
   - changeSet:
       id: create-contact-types-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: contact_types
@@ -300,7 +302,7 @@ databaseChangeLog:
 
   - changeSet:
       id: create-contacts-info-table
-      author: Daniiar
+      author: Sedep
       changes:
         - createTable:
             tableName: contacts_info

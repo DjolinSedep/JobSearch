@@ -3,7 +3,7 @@ package kg.attractor.jobsearch.service.Impl;
 import kg.attractor.jobsearch.dao.ResumeDao;
 import kg.attractor.jobsearch.dto.ResumeDto;
 import kg.attractor.jobsearch.dto.UserDto;
-import kg.attractor.jobsearch.entity.Resume;
+import kg.attractor.jobsearch.model.Resume;
 import kg.attractor.jobsearch.service.ResumeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class ResumeServiceImpl implements ResumeService {
                                 .name(e.getName())
                                 .category_id(e.getCategoryId())
                                 .salary(e.getSalary())
-                                .isActive(e.getIsActive())
+                                .isActive(e.isActive())
                                 .build())
                         .toList();
 
@@ -43,7 +43,7 @@ public class ResumeServiceImpl implements ResumeService {
                         .name(resume.getName())
                         .category_id(resume.getCategoryId())
                         .salary(resume.getSalary())
-                        .isActive(resume.getIsActive())
+                        .isActive(resume.isActive())
                         .build();
         }
 
@@ -58,7 +58,7 @@ public class ResumeServiceImpl implements ResumeService {
                                 .name(e.getName())
                                 .category_id(e.getCategoryId())
                                 .salary(e.getSalary())
-                                .isActive(e.getIsActive())
+                                .isActive(e.isActive())
                                 .build())
                         .toList();
         }
@@ -73,7 +73,7 @@ public class ResumeServiceImpl implements ResumeService {
                                 .name(e.getName())
                                 .category_id(e.getCategoryId())
                                 .salary(e.getSalary())
-                                .isActive(e.getIsActive())
+                                .isActive(e.isActive())
                                 .build())
                         .toList();
         }
@@ -89,7 +89,7 @@ public class ResumeServiceImpl implements ResumeService {
                                 .name(e.getName())
                                 .category_id(e.getCategoryId())
                                 .salary(e.getSalary())
-                                .isActive(e.getIsActive())
+                                .isActive(e.isActive())
                                 .build())
                         .toList();
 
@@ -108,7 +108,7 @@ public class ResumeServiceImpl implements ResumeService {
                         .name(resumeDto.getName())
                         .categoryId(resumeDto.getCategory_id())
                         .salary(resumeDto.getSalary())
-                        .isActive(resumeDto.getIsActive())
+                        .isActive(resumeDto.isActive())
                         .createdDate(LocalDate.now())
                         .updatedTime(LocalDate.now())
                         .build();
@@ -123,7 +123,7 @@ public class ResumeServiceImpl implements ResumeService {
                         .name(resumeDto.getName())
                         .categoryId(resumeDto.getCategory_id())
                         .salary(resumeDto.getSalary())
-                        .isActive(resumeDto.getIsActive())
+                        .isActive(resumeDto.isActive())
                         .createdDate(LocalDate.now())
                         .updatedTime(LocalDate.now())
                         .build();
@@ -138,7 +138,7 @@ public class ResumeServiceImpl implements ResumeService {
                         .name(resumeDto.getName())
                         .categoryId(resumeDto.getCategory_id())
                         .salary(resumeDto.getSalary())
-                        .isActive(resumeDto.getIsActive())
+                        .isActive(resumeDto.isActive())
                         .createdDate(LocalDate.now())
                         .updatedTime(LocalDate.now())
                         .build();

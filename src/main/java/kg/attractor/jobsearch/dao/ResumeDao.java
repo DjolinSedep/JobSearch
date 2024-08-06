@@ -1,7 +1,7 @@
 package kg.attractor.jobsearch.dao;
 
 
-import kg.attractor.jobsearch.entity.Resume;
+import kg.attractor.jobsearch.model.Resume;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -49,13 +49,14 @@ public class ResumeDao {
                 resume.getName(),
                 resume.getCategoryId(),
                 resume.getSalary(),
-                resume.getIsActive(),
+                resume.isActive(),
                 resume.getCreatedDate(),
                 resume.getUpdatedTime());
     }
 
     public void editResume(Resume resume){
         String sql = "update resumes set applicant_id = ?, name = ?, category_id = ?, salary = ?, is_active = ?, created_date = ?, update_time = ? where id = ?";
-        jdbcTemplate.update(sql, resume.getApplicantId(), resume.getName(), resume.getCategoryId(), resume.getSalary(), resume.getIsActive(), resume.getCreatedDate(), resume.getUpdatedTime(), resume.getId());
+        jdbcTemplate.update(sql, resume.getApplicantId(), resume.getName(), resume.getCategoryId(), resume.getSalary(), resume.isActive(), resume.getCreatedDate(), resume.getUpdatedTime(), resume.getId());
     }
+
 }

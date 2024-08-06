@@ -6,7 +6,6 @@ import kg.attractor.jobsearch.dao.VacancyDao;
 import kg.attractor.jobsearch.dto.ResumeDto;
 import kg.attractor.jobsearch.dto.UserDto;
 import kg.attractor.jobsearch.dto.VacancyDto;
-import kg.attractor.jobsearch.entity.Resume;
 import kg.attractor.jobsearch.model.User;
 import kg.attractor.jobsearch.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -79,7 +78,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserByPhoneNumber(String phoneNumber) {
-        UserDto user = userDao.findUserByNumber(phoneNumber);
+        User user = userDao.findUserByNumber(phoneNumber);
         return UserDto.builder()
                 .id(user.getId())
                 .name(user.getName())

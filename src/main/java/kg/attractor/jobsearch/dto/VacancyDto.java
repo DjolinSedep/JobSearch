@@ -1,5 +1,7 @@
 package kg.attractor.jobsearch.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -10,13 +12,19 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class VacancyDto {
     private Integer id;
+    @NotBlank
     private String Name;
+    @NotNull
     private Integer expTo;
+    @NotNull
     private Integer expFrom;
-    private BigDecimal salary;
+    @NotNull
+    private double salary;
     private String description;
+    @NotNull
     private Integer categoryId;
     private boolean isActive;
+    @NotNull
     private Integer authorId;
 
 

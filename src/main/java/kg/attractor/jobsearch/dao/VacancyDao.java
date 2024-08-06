@@ -1,6 +1,6 @@
 package kg.attractor.jobsearch.dao;
 
-import kg.attractor.jobsearch.entity.Vacancy;
+import kg.attractor.jobsearch.model.Vacancy;
 import kg.attractor.jobsearch.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -58,7 +58,7 @@ public class VacancyDao {
                 vacancy.getSalary(),
                 vacancy.getExpFrom(),
                 vacancy.getExpTo(),
-                vacancy.getIsActive(),
+                vacancy.isActive(),
                 vacancy.getAuthorId());
     }
 
@@ -75,7 +75,7 @@ public class VacancyDao {
     public void editVacancy(Vacancy vacancy) {
         String sql = "update vacancies set name = ?, description = ?, category_id = ?, salary = ?, exp_from = ?, exp_to = ?, is_active = ?, author_id = ?, created_date = ?, update_time = ? where id = ?";
         jdbcTemplate.update(sql, vacancy.getName(), vacancy.getDescription(), vacancy.getCategoryId(), vacancy.getSalary(),
-                vacancy.getExpFrom(), vacancy.getExpTo(), vacancy.getIsActive(), vacancy.getAuthorId(), vacancy.getCreatedDate(), vacancy.getUpdateDate(), vacancy.getId());
+                vacancy.getExpFrom(), vacancy.getExpTo(), vacancy.isActive(), vacancy.getAuthorId(), vacancy.getCreatedDate(), vacancy.getUpdatedTime(), vacancy.getId());
     }
 
     public List <Vacancy> findVacancyByCategory(String categoryId) {

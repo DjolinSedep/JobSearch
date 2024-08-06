@@ -3,7 +3,7 @@ package kg.attractor.jobsearch.service.Impl;
 import kg.attractor.jobsearch.dao.VacancyDao;
 import kg.attractor.jobsearch.dto.UserDto;
 import kg.attractor.jobsearch.dto.VacancyDto;
-import kg.attractor.jobsearch.entity.Vacancy;
+import kg.attractor.jobsearch.model.Vacancy;
 import kg.attractor.jobsearch.service.VacancyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class VacancyServiceImpl implements VacancyService {
                         .salary(e.getSalary())
                         .expFrom(e.getExpFrom())
                         .expTo(e.getExpTo())
-                        .isActive(e.getIsActive())
+                        .isActive(e.isActive())
                         .authorId(e.getAuthorId())
                         .build())
                 .toList();
@@ -49,7 +49,7 @@ public class VacancyServiceImpl implements VacancyService {
                         .salary(e.getSalary())
                         .expFrom(e.getExpFrom())
                         .expTo(e.getExpTo())
-                        .isActive(e.getIsActive())
+                        .isActive(e.isActive())
                         .authorId(e.getAuthorId())
                         .build())
                 .toList();
@@ -74,7 +74,7 @@ public class VacancyServiceImpl implements VacancyService {
                         .salary(e.getSalary())
                         .expFrom(e.getExpFrom())
                         .expTo(e.getExpTo())
-                        .isActive(e.getIsActive())
+                        .isActive(e.isActive())
                         .authorId(e.getAuthorId())
                         .build())
                 .toList();
@@ -114,7 +114,7 @@ public class VacancyServiceImpl implements VacancyService {
                 .isActive(vacancyDto.isActive())
                 .authorId(vacancyDto.getAuthorId())
                 .createdDate(LocalDate.now())
-                .updateDate(LocalDate.now())
+                .updatedTime(LocalDate.now())
                 .build();
         vacancyDao.createVacancy(vacancy);
     }
@@ -136,7 +136,7 @@ public class VacancyServiceImpl implements VacancyService {
                         .salary(e.getSalary())
                         .expFrom(e.getExpFrom())
                         .expTo(e.getExpTo())
-                        .isActive(e.getIsActive())
+                        .isActive(e.isActive())
                         .authorId(e.getAuthorId())
                         .build())
                 .toList();
@@ -159,7 +159,7 @@ public class VacancyServiceImpl implements VacancyService {
                 .expTo(vacancyDto.getExpTo())
                 .isActive(vacancyDto.isActive())
                 .authorId(vacancyDto.getAuthorId())
-                .updateDate(LocalDate.now())
+                .updatedTime(LocalDate.now())
                 .build();
         vacancyDao.editVacancy(vacancy);
     }
@@ -176,7 +176,7 @@ public class VacancyServiceImpl implements VacancyService {
                         .salary(e.getSalary())
                         .expFrom(e.getExpFrom())
                         .expTo(e.getExpTo())
-                        .isActive(e.getIsActive())
+                        .isActive(e.isActive())
                         .authorId(e.getAuthorId())
                         .build())
                 .collect(Collectors.toList());
