@@ -1,5 +1,6 @@
 package kg.attractor.jobsearch.controllers;
 
+import jakarta.validation.Valid;
 import kg.attractor.jobsearch.dto.ResumeDto;
 import kg.attractor.jobsearch.dto.UserDto;
 import kg.attractor.jobsearch.dto.VacancyDto;
@@ -22,7 +23,7 @@ public class ApplicantController {
     private final UserService userService;
 
     @PostMapping("create/resume")
-    public ResponseEntity<?> createResume(@RequestBody ResumeDto resumeDto){
+    public ResponseEntity<?> createResume(@RequestBody @Valid ResumeDto resumeDto){
         resumeService.create(resumeDto);
         return ResponseEntity.status(HttpStatus.CREATED).body("Resume is created");
     }
