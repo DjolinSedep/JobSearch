@@ -1,5 +1,6 @@
 package kg.attractor.jobsearch.controllers;
 
+import ch.qos.logback.core.model.Model;
 import kg.attractor.jobsearch.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -30,7 +31,7 @@ public class AuthenticationController {
         }
 
         @GetMapping
-        public String getUser() {
+        public String getUser(Model model) {
             var users = userService.getAllUsers();
             return "index";
         }

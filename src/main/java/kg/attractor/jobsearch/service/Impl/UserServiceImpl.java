@@ -24,10 +24,9 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<UserDto> getUsers() {
         var users = userDao.getUsers();
-        return users.stream()
-                .map(this::convertToDto)
+       return users.stream()
+             .map(this::convertToDto)
                 .toList();
-
     }
 
     private UserDto convertToDto(User user) {
@@ -41,7 +40,6 @@ public class UserServiceImpl implements UserService {
                 .age(user.getAge())
                 .build();
     }
-
 
     @Override
     public List<UserDto> getAllUsers() {
