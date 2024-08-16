@@ -7,7 +7,10 @@ import kg.attractor.jobsearch.dto.VacancyDto;
 import java.util.List;
 
 public interface UserService {
-    public abstract List<UserDto> getAllUser();
+    static UserDto getCurrentInfo() {
+        return null;
+    }
+    List <UserDto> getUsers();
 
     public abstract List<UserDto> getAllUsers();
 
@@ -26,7 +29,6 @@ public interface UserService {
     List<VacancyDto> getVacancyByCategory(String categoryId);
 
     public abstract List<UserDto> getUserResumes(int userId);
-
 
     List<UserDto> getUserAppliedJobs(int userId);
 

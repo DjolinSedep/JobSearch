@@ -1,4 +1,4 @@
-package kg.attractor.jobsearch.controllers;
+package kg.attractor.jobsearch.controllers.api;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

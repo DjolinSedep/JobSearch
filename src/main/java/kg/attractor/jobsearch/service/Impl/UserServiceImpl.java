@@ -1,9 +1,7 @@
 package kg.attractor.jobsearch.service.Impl;
-
 import io.micrometer.observation.ObservationFilter;
 import kg.attractor.jobsearch.dao.UserDao;
 import kg.attractor.jobsearch.dao.VacancyDao;
-import kg.attractor.jobsearch.dto.ResumeDto;
 import kg.attractor.jobsearch.dto.UserDto;
 import kg.attractor.jobsearch.dto.VacancyDto;
 import kg.attractor.jobsearch.model.User;
@@ -13,7 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 @Transactional
@@ -23,9 +22,26 @@ public class UserServiceImpl implements UserService {
     private final VacancyDao vacancyDao;
 
     @Override
-    public List<UserDto> getAllUser() {
-        return List.of();
+    public List<UserDto> getUsers() {
+        var users = userDao.getUsers();
+        return users.stream()
+                .map(this::convertToDto)
+                .toList();
+
     }
+
+    private UserDto convertToDto(User user) {
+        return UserDto.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .surname(user.getSurname())
+                .password(user.getPassword())
+                .email(user.getEmail())
+                .phoneNumber(user.getPhoneNumber())
+                .age(user.getAge())
+                .build();
+    }
+
 
     @Override
     public List<UserDto> getAllUsers() {
@@ -40,7 +56,7 @@ public class UserServiceImpl implements UserService {
                         .phoneNumber(e.getPhoneNumber())
                         .age(e.getAge())
                         .build())
-                .collect(Collectors.toList());
+                .collect(toList());
     }
 
     @Override
@@ -103,10 +119,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getJobsByCategory(String category) {
+
         return List.of();
     }
-
-
 
     @Override
     public List<VacancyDto> getVacancyByCategory(String categoryId) {
@@ -142,6 +157,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void create(UserDto userDto){
+
         return;
     }
 
@@ -159,4 +175,5 @@ public class UserServiceImpl implements UserService {
     public ObservationFilter updateUser(int id, UserDto userDto) {
         return null;
     }
+
 }

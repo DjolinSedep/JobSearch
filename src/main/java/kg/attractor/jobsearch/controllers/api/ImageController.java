@@ -1,4 +1,4 @@
-package kg.attractor.jobsearch.controllers;
+package kg.attractor.jobsearch.controllers.api;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

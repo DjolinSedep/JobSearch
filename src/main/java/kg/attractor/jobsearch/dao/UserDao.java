@@ -17,7 +17,6 @@ import java.util.Optional;
 public class UserDao {
     private final JdbcTemplate jdbcTemplate;
 
-
     public List<User> getAllUsers() {
         String sql = "select * from users";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
@@ -51,4 +50,7 @@ public class UserDao {
                 ));
     }
 
+    public Object getUsers() {
+        return null;
+    }
 }
