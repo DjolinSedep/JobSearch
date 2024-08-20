@@ -35,16 +35,16 @@ public class ResumeController {
         return "users/profileEmployer";
     }
 
-    @GetMapping("profile-employer")
-    public String employerProfile(@SessionAttribute("userFullName") String fullName,
-                                  @SessionAttribute("userEmail") String email,
-                                  @SessionAttribute("userPhone") String phone,
-                                  Model model) {
-        model.addAttribute("fullName", fullName);
-        model.addAttribute("email", email);
-        model.addAttribute("phone", phone);
-        return "users/profile-employer";
-    }
+//    @GetMapping("profile-employer")
+//    public String employerProfile(@SessionAttribute("userFullName") String fullName,
+//                                  @SessionAttribute("userEmail") String email,
+//                                  @SessionAttribute("userPhone") String phone,
+//                                  Model model) {
+//        model.addAttribute("fullName", fullName);
+//        model.addAttribute("email", email);
+//        model.addAttribute("phone", phone);
+//        return "users/profile-employer";
+//    }
 }
 
 
