@@ -96,7 +96,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- Форма редактирования профиля -->
                 <form>
                     <div class="mb-3">
                         <label for="companyName" class="form-label">Название компании</label>

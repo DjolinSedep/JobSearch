@@ -40,7 +40,7 @@ public class ResumeController {
 
     @GetMapping("profile-employer")
      public String showProfileEmployeer(Model model, Principal principal) {
-        return "users/profile/mployer";
+        return "users/profile/employer";
     }
 
 }
