@@ -1,6 +1,6 @@
 package kg.attractor.jobsearch.dao;
 
-import kg.attractor.jobsearch.dto.UserDto;
+
 import kg.attractor.jobsearch.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.support.DataAccessUtils;
@@ -8,7 +8,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import java.sql.Struct;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,7 +49,8 @@ public class UserDao {
                 ));
     }
 
-    public Object getUsers() {
-        return null;
+    public List<User> findVacancyByCategory(String category) {
+        String sql = "select * from vacancies where CATEGORY_ID = ?";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), category);
     }
 }

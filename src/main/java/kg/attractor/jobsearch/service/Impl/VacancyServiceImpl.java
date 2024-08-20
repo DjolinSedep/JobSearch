@@ -181,4 +181,23 @@ public class VacancyServiceImpl implements VacancyService {
                         .build())
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<VacancyDto> showAllVacancies() {
+        List<Vacancy> list = vacancyDao.findAll();
+        return list.stream()
+                .map(e -> VacancyDto.builder()
+                        .id(e.getId())
+                        .Name(e.getName())
+                        .description(e.getDescription())
+                        .categoryId(e.getCategoryId())
+                        .salary(e.getSalary())
+                        .expFrom(e.getExpFrom())
+                        .expTo(e.getExpTo())
+                        .isActive(e.isActive())
+                        .authorId(e.getAuthorId())
+                        .build())
+                .collect(Collectors.toList());
+
+    }
 }

@@ -30,4 +30,6 @@ public interface VacancyService {
     void applyVacancies(int resume_id, int vacancy_id);
 
     List<VacancyDto> getVacancyByCategory(String categoryId);
+
+    List<VacancyDto> showAllVacancies();
 }

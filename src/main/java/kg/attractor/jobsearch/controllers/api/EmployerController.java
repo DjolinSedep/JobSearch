@@ -8,27 +8,27 @@ public class EmployerController {
 
     @PostMapping("createVacancy")
     public String createVacancy() {
-        return "Creating a Vacancy";
+        return "CreatingVacancy";
     }
 
     @PutMapping("editVacancy")
     public String editVacancy() {
-        return "Editing a Vacancy";
+        return "EditingVacancy";
     }
 
     @DeleteMapping("deleteVacancy/{id}")
     public String deleteVacancy(@PathVariable Long id) {
-        return "Deleting a Vacancy" + id;
+        return "DeletingVacancy" + id;
     }
 
     @GetMapping("searchResume")
     public String searchResume() {
-        return "Searching for Resumes";
+        return "SearchingResumes";
     }
 
     @GetMapping("searchByCategory/{category}")
     public String searchByCategory(@RequestParam String category) {
-        return "Searching Resumes by Category" + category;
+        return "SearchingResumesCategory" + category;
     }
 
     @GetMapping("searchResponse/{vacancyId}")

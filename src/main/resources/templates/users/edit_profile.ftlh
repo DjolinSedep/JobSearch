@@ -3,43 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Profile</title>
+    <title>Job Seeker Dashboard</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <link href="styles.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .resume-table {
+            margin-top: 30px;
+        }
+
+        .btn-custom {
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
+
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6 col-lg-4">
-            <div class="card mt-5">
-                <div class="card-body">
-                    <h2 class="card-title text-center mb-4">Edit Profile</h2>
-                    <form action="/update-profile" method="post">
-                        <div class="mb-3">
-                            <label for="firstName" class="form-label">First Name</label>
-                            <input type="text" class="form-control" id="firstName" name="firstName" value="John" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="lastName" class="form-label">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" name="lastName" value="Doe" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" value="john.doe@example.com" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Phone</label>
-                            <input type="text" class="form-control" id="phone" name="phone" value="(123) 456-7890">
-                        </div>
-                        <div class="mb-3">
-                            <label for="address" class="form-label">Address</label>
-                            <input type="text" class="form-control" id="address" name="address" value="123 Main St, Anytown, USA">
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-primary">Update Profile</button>
-                        </div>
-                    </form>
-                </div>
+    <h1>Job Seeker Dashboard</h1>
+
+    <div class="text-center mb-4">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+    </div>
+
+    <div class="resume-table">
+        <table class="table table-bordered">
+            <thead class="table-light">
+            <tr>
+                <th>Resume Title</th>
+                <th>Last Updated</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>Software Engineer</td>
+                <td>15 August 2024</td>
+                <td>
+                    <button class="btn btn-success btn-sm btn-custom">Update</button>
+                    <button class="btn btn-warning btn-sm">Edit</button>
+                </td>
+            </tr>
+            <tr>
+                <td>Project Manager</td>
+                <td>10 August 2024</td>
+                <td>
+                    <button class="btn btn-success btn-sm btn-custom">Update</button>
+                    <button class="btn btn-warning btn-sm">Edit</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="firstName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <!-- Другие поля для редактирования профиля -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
             </div>
         </div>
     </div>

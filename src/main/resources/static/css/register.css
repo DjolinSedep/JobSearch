@@ -1,23 +1,116 @@
+/* Общий фон страницы */
+body {
+    background-color: #87CEEB; /* Небесно голубой */
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Высота на весь экран */
+    display: flex;
+    align-items: center; /* Вертикальное центрирование */
+    justify-content: center; /* Горизонтальное центрирование */
+}
 
+/* Общие стили для контейнера */
+.container {
+    max-width: 600px;
+    padding: 20px;
+}
+
+/* Стили для карточки */
 .card {
+    border: 1px solid #ddd;
     border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Белый фон для карточки */
 }
 
-.card-body {
-    padding: 2rem;
+/* Стили для заголовка карточки */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
-h2.card-title {
-    font-size: 1.75rem;
-    font-weight: bold;
+/* Стили для форм */
+.form-control {
+    border-radius: 0.375rem; /* Скругление углов */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
 }
 
+/* Стили для тултипов валидности */
+.valid-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    background-color: #28a745;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+}
+
+.invalid-tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    background-color: #dc3545;
+    color: #fff;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+    border-radius: 0.25rem;
+}
+
+/* Стили для элементов с валидностью */
+.was-validated .form-control:valid ~ .valid-tooltip {
+    display: block;
+}
+
+.was-validated .form-control:invalid ~ .invalid-tooltip {
+    display: block;
+}
+
+/* Стили для элементов с ошибками */
+.form-control:invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control:valid {
+    border-color: #28a745;
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Стили для input-group */
+.input-group.has-validation {
+    position: relative;
+}
+
+.input-group-text {
+    border-radius: 0.375rem;
+}
+
+/* Стили для кнопки */
 .btn-primary {
     background-color: #007bff;
     border-color: #007bff;
+    border-radius: 0.375rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
 }
 
 .btn-primary:hover {
     background-color: #0056b3;
     border-color: #004085;
+}
+
+/* Стили для формы */
+.row.g-3 {
+    gap: 1rem; /* Отступы между колонками */
+}
+
+/* Стили для селектов */
+.form-select {
+    border-radius: 0.375rem;
 }

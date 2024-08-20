@@ -37,6 +37,7 @@ public class ResumeDao {
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Resume.class), applicantId);
     }
 
+
     public void deleteById(int resumeId) {
         String sql = "delete from resumes where id = ?";
         jdbcTemplate.update(sql, resumeId);

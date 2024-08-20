@@ -23,8 +23,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getUsers() {
-        var users = userDao.getUsers();
-       return users.stream()
+        var users = userDao.getAllUsers();
+        return users.stream()
              .map(this::convertToDto)
                 .toList();
     }
@@ -117,8 +117,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getJobsByCategory(String category) {
+        List<User> list = userDao.findVacancyByCategory(category);
+        return list.stream()
+                .map(e -> UserDto.builder()
+                        .id(e.getId())
+                        .name(e.getName())
+                        .surname(e.getSurname())
+                        .password(e.getPassword())
+                        .email(e.getEmail())
+                        .phoneNumber(e.getPhoneNumber())
+                        .age(e.getAge())
+                        .build())
+                .toList();
 
-        return List.of();
     }
 
     @Override
@@ -128,7 +139,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getUserResumes(int userId) {
-        return List.of();
+        List<User> list = userDao.findResumesByUserId(userId);
+        return list.stream()
+                .map(e -> UserDto.builder()
+                        .id(e.getId())
+                        .name(e.getName())
+                        .surname(e.getSurname())
+                        .password(e.getPassword())
+                        .email(e.getEmail())
+                        .phoneNumber(e.getPhoneNumber())
+                        .age(e.getAge())
+                        .build())
+                .toList();
     }
 
 
