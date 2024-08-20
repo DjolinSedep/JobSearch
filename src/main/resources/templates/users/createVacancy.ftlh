@@ -51,7 +51,7 @@
 
 <div class="container mt-5">
     <div class="row">
-        <!-- Левая часть - Создание вакансии -->
+
         <div class="col-md-8">
             <div class="card vacancy-section">
                 <div class="card-body">
@@ -89,7 +89,6 @@
             </div>
         </div>
 
-        <!-- Правая часть - Просмотр резюме -->
         <div class="col-md-4">
             <div class="card resumes-section">
                 <div class="card-body">

@@ -3,10 +3,12 @@ package kg.attractor.jobsearch.service;
 import io.micrometer.observation.ObservationFilter;
 import kg.attractor.jobsearch.dto.UserDto;
 import kg.attractor.jobsearch.dto.VacancyDto;
+import kg.attractor.jobsearch.model.User;
 
 import java.util.List;
 
 public interface UserService {
+
     static UserDto getCurrentInfo() {
         return null;
     }
@@ -41,4 +43,8 @@ public interface UserService {
     void addUser(UserDto userDto);
 
     ObservationFilter updateUser(int id, UserDto userDto);
+
+     void registerUser(UserDto userDto);
+
+    void saveUser(User user);
 }

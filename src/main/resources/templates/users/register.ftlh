@@ -33,7 +33,6 @@
 </head>
 <body>
 
-<!-- Навигационная панель -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">Job Portal</a>
@@ -54,9 +53,9 @@
     <div class="card">
         <div class="card-body">
             <h2 class="card-title text-center">User Registration</h2>
-            <form action="/registerUser" method="post">
+            <form action="profile-employer" method="post">
 
-                <!-- Выбор типа пользователя -->
+
                 <div class="user-type-group">
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="userType" id="jobSeeker" value="jobSeeker" checked>
@@ -72,7 +71,6 @@
                     </div>
                 </div>
 
-                <!-- Поля, общие для всех пользователей -->
                 <div class="mb-3">
                     <label for="fullName" class="form-label">Full Name</label>
                     <input type="text" class="form-control" id="fullName" name="fullName" required>
@@ -114,7 +112,7 @@
             </form>
 
             <div class="mt-4 text-center">
-                <a href="/create-vacancy" class="btn btn-secondary">Create Vacancy</a>
+                <a href="/create-resume" class="btn btn-secondary">Create Resume</a>
             </div>
 
         </div>

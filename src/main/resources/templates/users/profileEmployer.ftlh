@@ -11,7 +11,6 @@
             font-family: Arial, sans-serif;
             padding-top: 20px;
         }
-
         .container {
             background-color: #fff;
             padding: 20px;
@@ -20,27 +19,25 @@
             max-width: 800px;
             margin: auto;
         }
-
         .profile-header {
             text-align: center;
             margin-bottom: 20px;
         }
-
         .profile-header h1 {
             font-size: 2rem;
             font-weight: bold;
         }
-
+        .user-info {
+            margin-bottom: 20px;
+        }
         .edit-profile {
             text-align: right;
             margin-bottom: 20px;
         }
-
         .vacancy-list {
             list-style-type: none;
             padding: 0;
         }
-
         .vacancy-item {
             padding: 15px;
             border: 1px solid #ddd;
@@ -48,17 +45,14 @@
             margin-bottom: 10px;
             background-color: #f9f9f9;
         }
-
         .vacancy-item h2 {
             font-size: 1.5rem;
             margin: 0 0 10px 0;
         }
-
         .vacancy-item p {
             margin: 0;
             color: #666;
         }
-
         .vacancy-item .btn {
             margin-top: 10px;
         }
@@ -69,6 +63,12 @@
 <div class="container">
     <div class="profile-header">
         <h1>Личный кабинет работодателя</h1>
+    </div>
+
+    <div class="user-info">
+        <p><strong>ФИО:</strong> ${fullName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Телефон:</strong> ${phone}</p>
     </div>
 
     <div class="edit-profile">
@@ -83,10 +83,8 @@
             <button class="btn btn-secondary">Обновить</button>
             <button class="btn btn-warning">Редактировать</button>
         </li>
-
     </ul>
 </div>
-
 
 <div class="modal fade" id="editProfileModal" tabindex="-1" aria-labelledby="editProfileModalLabel" aria-hidden="true">
     <div class="modal-dialog">

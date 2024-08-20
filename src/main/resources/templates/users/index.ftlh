@@ -59,15 +59,17 @@
 
 <div class="container content">
 
-    <div <#if ${#authentication.principal == null}">
+    <div <#if {#authentication.principal == null}">
         <div>
             <h1 class="text-center">Добро пожаловать на Job Portal!</h1>
             <p class="text-center"><a href="/registration" class="register-link">Зарегистрируйтесь сейчас</a></p>
         </div>
     </div>
 
-     Блок для авторизованных пользователей
-    <div th:if="${#authentication.principal != null}">
+
+
+                                    Блок для авторизованных пользователей
+    <div <#if= {#authentication.principal != null}">
         <div class="container mt-5">
             <div class="row justify-content-center">
                 <div class="col-md-4 mb-4">

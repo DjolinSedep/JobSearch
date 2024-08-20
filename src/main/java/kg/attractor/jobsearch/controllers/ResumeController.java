@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
+
 import java.security.Principal;
 import java.util.List;
 
@@ -23,16 +25,6 @@ public class ResumeController {
         return "users/resume";
     }
 
-//    @PostMapping("/save-resume")
-//    public String saveResume(@RequestParam String name,
-//                             @RequestParam String Category_id,
-//                             @RequestParam int salary,
-//                             Principal principal) {
-//
-//        resumeService.saveResume(name, Category_id , salary, principal.getName());
-//        return "redirect:/profile";
-//    }
-
     @GetMapping("create-resume")
     public String createResume() {
         return "users/createResume";
@@ -40,9 +32,19 @@ public class ResumeController {
 
     @GetMapping("profile-employer")
      public String showProfileEmployeer(Model model, Principal principal) {
-        return "users/profile/employer";
+        return "users/profileEmployer";
     }
 
+    @GetMapping("profile-employer")
+    public String employerProfile(@SessionAttribute("userFullName") String fullName,
+                                  @SessionAttribute("userEmail") String email,
+                                  @SessionAttribute("userPhone") String phone,
+                                  Model model) {
+        model.addAttribute("fullName", fullName);
+        model.addAttribute("email", email);
+        model.addAttribute("phone", phone);
+        return "users/profile-employer";
+    }
 }
 
 
